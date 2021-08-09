@@ -1,7 +1,6 @@
 (function () {
-  let h1= document.getElementById('title')
-  h1.className = "header";
-  h1.innerText = "New Account"
+  let h1= document.getElementById('title');
+  h1.innerHTML = "New Account";
 
 
   //document.getElementById("userInput").submit();
@@ -45,7 +44,7 @@
     for(let key in newAcct){
       if(newAcct[key] === ""){
         isInfoOK = false;
-        message.innerText = "A field is empty!!"
+        message.innerText = "Please fill in all fields!"
         document.getElementById(key).reset()
       }
     }
@@ -53,7 +52,7 @@
     // checks if the passwords match
     if(newAcct["pass1"] !== newAcct["pass2"]){
       isInfoOK = false;
-      message.innerHTML = "The password fields do not match!!";
+      message.innerHTML = "The password fields do not match!";
       document.getElementById("pass1").value = ""; 
       document.getElementById("pass2").value = "";
     
@@ -75,9 +74,11 @@
   //if the input is valid it rerenders the page and displays a message
     if(isInfoOK === true){
       createAcct.push(newAcct);
-      document.getElementById("userInput").reset()
-      document.getElementById("content").innerHTML ='';
-      
+      document.body.innerHTML = "";
+     let success = document.createElement("div");
+     success.id = "success";
+     success.innerText = 'Account Created!';
+     document.body.append(success);
     }
   }
 
